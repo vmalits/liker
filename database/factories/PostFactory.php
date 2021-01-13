@@ -10,7 +10,6 @@ class PostFactory extends Factory
 {
     protected $model = Post::class;
 
-
     #[ArrayShape(['text' => "string"])] public function definition(): array
     {
         return [

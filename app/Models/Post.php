@@ -13,7 +13,6 @@ class Post extends Model
 
     protected $fillable = ['body'];
 
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
