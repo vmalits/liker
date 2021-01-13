@@ -2,7 +2,7 @@
     @foreach($posts as $post)
         <div class="flex items-center justify-between border-b border-gray-200 p3">
             <div class="flex">
-                <img src="" alt="" class="w-12 h-12 rounded-full mr-4">
+                <img src="{{$post->user->profilePhoto()}}" alt="{{$post->user->name}}" class="w-12 h-12 rounded-full mr-4">
                 <div>
                     <h2 class="font-semibold">
                         {{$post->user->name}}
@@ -10,7 +10,7 @@
                             {{$post->created_at->diffForHumans()}}
                         </span>
                     </h2>
-                    <p>{{$post->body}}</p>
+                    <p class="mb-2">{{$post->body}}</p>
                 </div>
             </div>
             <div>Likes</div>
