@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use JetBrains\PhpStorm\Pure;
 
 class User extends Authenticatable
 {
@@ -42,8 +43,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    #[Pure] public function profilePhoto(): string
+    {
+        if (!$this->profile_photo) {
+            return $this->defaultProfilePhotoUrl();
+        }
+
+        return '';
+    }
+
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    #[Pure] private function defaultProfilePhotoUrl(): string
+    {
+        return 'https://ui-avatars.com/api/?name='.urlencode($this->name);
     }
 }
